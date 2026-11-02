@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background-color: #0d0e12;
+  }
+
+  body {
+    @apply min-h-screen font-sans text-slate-100 antialiased;
+    background-color: #0d0e12;
+    background-image:
+      radial-gradient(900px circle at 8% -10%, rgba(79, 70, 229, 0.16), transparent 45%),
+      radial-gradient(700px circle at 95% 0%, rgba(34, 197, 94, 0.07), transparent 40%);
+    background-attachment: fixed;
+  }
+
+  input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(0.8);
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .field-input {
+    @apply w-full rounded-xl border border-obsidian-border bg-obsidian-canvas px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 outline-none transition focus:border-accent focus:shadow-glow;
+  }
+}
+
+@media (max-width: 767px) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  body {
+    background: #ffffff !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #one-page-notes,
+  #one-page-notes * {
+    visibility: visible;
+  }
+
+  #one-page-notes {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
